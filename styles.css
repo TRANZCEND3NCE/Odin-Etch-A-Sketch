@@ -11,11 +11,12 @@ body {
   margin-top: 40px;
 }
 
-.container {
-  display: grid;
+#grid-container {
+  width: 600px;
+  height: 600px;
   border: 1px solid black;
-  width: 300px;
-  height: 300px;
+  display: flex;
+  flex-direction: wrap;
 }
 
 #buttons {
@@ -29,6 +30,10 @@ button {
   border: 1px solid black;
   cursor: pointer;
   background: rgb(167, 172, 199);
+}
+
+button:active {
+  transform: scale(0.95);
 }
 
 button:hover {
