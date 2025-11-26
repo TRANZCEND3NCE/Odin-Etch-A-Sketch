@@ -2,19 +2,19 @@ let defaultColor = "black";
 const gridContainer = document.getElementById("grid-container");
 
 const createGrid = (size) => {
-  const squares = size * size;
+  const totalSquares = size * size;
 
-  for (let i = 0; i < squares; i++) {
+  for (let i = 0; i < totalSquares; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
 
-    square.style.flexBasic = `${100 / size}%`;
+    square.style.flexBasis = `${100 / size}%`;
     
     square.addEventListener("mouseenter", () => {
       if (defaultColor === "black") {
         square.style.backgroundColor = "black";
       } else if (defaultColor === "randomColor") {
-        square.style.backgroundColor = getRandomColor();
+        square.style.backgroundColor = randomColor();
       }
     });
     gridContainer.appendChild(square);
@@ -30,16 +30,31 @@ const resetGrid = () => {
     alert("Please enter a valid number")
     return;
   }
-  if (newSize > 100) newSize = 100;
+  if (newGrid > 100) newGrid = 100;
 
   gridContainer.innerHTML = "";
-  createGrid(newSize);
-}
+  createGrid(newGrid);
+};
 
+const clearGrid = () => {
+  const squares = document.querySelectorAll(".square");
+  squares.forEach(square => {
+    square.style.backgroundColor = "white";
+  })
+};
 
+const randomColor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+};
 
-
-
-
-
-document.getElementById("")
+document.getElementById("resize-btn").addEventListener("click", resetGrid);
+document.getElementById("reset-btn").addEventListener("click", clearGrid);
+document.getElementById("random-btn").addEventListener("click", () => {
+  defaultColor = "randomColor"
+});
+document.getElementById("default-btn").addEventListener("click", () => {
+  defaultColor = "black"
+})
