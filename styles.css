@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -16,7 +17,7 @@ body {
   height: 600px;
   border: 1px solid black;
   display: flex;
-  flex-direction: wrap;
+  flex-wrap: wrap;
 }
 
 .square {
