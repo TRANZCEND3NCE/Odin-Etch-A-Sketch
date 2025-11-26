@@ -20,10 +20,9 @@ const createGrid = (size) => {
     gridContainer.appendChild(square);
   }
 };
-
 createGrid(16);
 
-const resetGrid = () => {
+const resizeGrid = () => {
   let newGrid = parseInt(prompt("Enter new grid size (1-100):"))
 
   if (Number.isNaN(newGrid) || newGrid < 1) {
@@ -36,7 +35,7 @@ const resetGrid = () => {
   createGrid(newGrid);
 };
 
-const clearGrid = () => {
+const resetGrid = () => {
   const squares = document.querySelectorAll(".square");
   squares.forEach(square => {
     square.style.backgroundColor = "white";
@@ -50,11 +49,7 @@ const randomColor = () => {
   return `rgb(${r}, ${g}, ${b})`;
 };
 
-document.getElementById("resize-btn").addEventListener("click", resetGrid);
-document.getElementById("reset-btn").addEventListener("click", clearGrid);
-document.getElementById("random-btn").addEventListener("click", () => {
-  defaultColor = "randomColor"
-});
-document.getElementById("default-btn").addEventListener("click", () => {
-  defaultColor = "black"
-})
+document.getElementById("resize-btn").addEventListener("click", resizeGrid);
+document.getElementById("reset-btn").addEventListener("click", resetGrid);
+document.getElementById("random-btn").addEventListener("click", () => {defaultColor = "randomColor"});
+document.getElementById("default-btn").addEventListener("click", () => {defaultColor = "black"})
