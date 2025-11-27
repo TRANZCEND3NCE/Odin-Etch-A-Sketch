@@ -11,11 +11,8 @@ const createGrid = (size) => {
     square.style.flexBasis = `${100 / size}%`;
     
     square.addEventListener("mouseenter", () => {
-      if (defaultColor === "black") {
-        square.style.backgroundColor = "black";
-      } else if (defaultColor === "randomColor") {
-        square.style.backgroundColor = randomColor();
-      }
+      defaultColor === "black" ? square.style.backgroundColor = "black" :
+      square.style.backgroundColor = randomColor();
     });
     gridContainer.appendChild(square);
   }
